@@ -1,0 +1,58 @@
+body {
+  background: #ebedf1;
+  font-family: 'Lucida Grande', 'Heveltica Nueue', 'Helvetica', 'sans-serif';
+  padding-bottom: 6em;
+}
+demo {
+  padding: 3em;
+  display: block;
+}
+pre {
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+section + section {
+  margin-top: 2em;
+  border-top: 1px dashed rgba(0,0,0,0.1);
+  padding-top: 2em;
+}
+.options li code:first-of-type {
+  font-size: 1.4em;
+}
+.ractive-stepper.innerarrows {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.3em;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.ractive-stepper.innerarrows.focused {
+  box-shadow: 0 0 4px #0095ff;
+}
+.ractive-stepper.innerarrows input {
+  background: none;
+  border: none;
+  appearance: none;
+  outline: none;
+}
+.ractive-stepper.thing {
+  background: linear-gradient(#eee, #ddd);
+  box-shadow: 0 1px 2px #fff inset, 0 1px #fff;
+  border: 1px solid #ccc;
+  padding: 0 0.3em;
+  border-radius: 4px;
+  font-size: 1.4em;
+  color: #555;
+  transition: all 0.3s ease;
+}
+.ractive-stepper.thing.focused {
+  box-shadow: 0 1px 2px rgba(255,255,255,0) inset, 0 1px rgba(255,255,255,0), 0 0 3px #0095ff;
+}
+.ractive-stepper.thing input {
+  background: none;
+  border: none;
+  appearance: none;
+  outline: none;
+  font-size: 1.4em;
+  text-shadow: 0 1px #fff;
+}

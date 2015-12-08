@@ -1,0 +1,135 @@
+
+
+<html>
+    <head>
+        <title>Ractive Stepper Demo</title>
+
+        <meta charset="utf-8">
+
+        <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+        <link rel='stylesheet' href='css/styles.css'/>
+
+    </head>
+
+    <body>
+
+
+        <demo></demo>
+
+        <script src='../ractive-stepper.min.js'></script>
+
+        <script id='template' type='text/ractive'>
+
+        <h1>Ractive Stepper</h1>
+
+        <p>A simple stepper component 
+
+        <section>
+
+            <h2>Basic usage</h2>
+
+            <p>In your ractive instance:</p>
+
+        <pre>
+            <code>
+    new Ractive({
+        ...
+        components: {
+            stepper: require('ractive--stepper')
+        },
+        ...
+    });
+            </code>
+        </pre>
+
+            <p>And then use it in your templates</p>
+
+        <pre>
+            <code>
+    &lt;stepper value='5'/&gt;
+            </code>
+        </pre>
+
+            <p>Result: <stepper value='5'/> (by default there is only minimal styling provided).</p>
+
+            <section class='options'>
+                <h2>Options</h2>
+
+            <ul>
+                <li>
+                    <code>step</code> Specifies the value granularity of the element’s value (default <code>1</code>)
+                </li>
+
+                <li>
+                    <code>min</code> The expected lower bound for the element’s value (default <code>null</code>)
+                </li>
+
+                <li>
+                    <code>max</code> The expected upper bound for the element’s value (default <code>null</code>)
+                </li>
+
+                <li>
+                    <code>size</code> Maps to the <code>size</code> attribute of the inner input (default <code>3</code>)
+                </li>
+
+            </ul>
+
+
+        <pre>
+            <code>
+    &lt;stepper value='10' min='0' max='50' step='5' size='20'/&gt;
+            </code>
+        </pre>
+
+            <p>Result: <stepper value='5' min='0' max='50' step='5' size='20'/></p>
+
+            </section>
+
+            <section>
+                <h2>Styling</h2>
+
+                <p>Designed to be easily stylable; <code>class</code> and <code>style</code> attriutes work as expected.</p>
+
+                <p>
+                    Inner arrows:
+                    <stepper class='innerarrows'/>
+                </p>
+
+                <p>
+                    Some other random styles:
+                    <stepper class='thing'/>
+                </p>
+
+            </section>
+
+        </script>
+
+        <script>
+
+            var main = new Ractive({
+
+                el: 'demo',
+
+                template: '#template',
+
+                data: {
+                },
+
+                components: {
+                    stepper:  RactiveStepper// don't do globals, kids
+                    //stepper: require('ractive-stepper') // use a buildsystem
+                },
+
+                oncomplete: function() {
+                    //debug stuff 
+                    window.s = this.findComponent('stepper');
+                }
+
+            })
+
+        </script>
+
+    </body>
+
+</html>
+

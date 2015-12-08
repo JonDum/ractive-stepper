@@ -1,0 +1,19 @@
+<div class="ractive-stepper {{class}}{{#if focused}} focused{{/if}}" style='{{style}}'>
+
+    {{#if showInput}}
+    <input value="{{value}}"
+           size='{{size}}'
+           on-keydown='keydown'
+           on-keyup='keyup'
+           on-keypress='keypress'
+           on-focus='set("focused", true)'
+           on-blur='set("focused", false)'
+           />
+    {{/if}}
+
+    <div class='steppers'>
+        <div class='up' on-mousedown='set("incrementing", true)' on-mouseup='set("incrementing", false)'></div>
+        <div class='down' on-mousedown='set("decrementing", true)' on-mouseup='set("decrementing", false)'></div>
+    </div>
+
+</div>
