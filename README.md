@@ -38,3 +38,10 @@ Use it
 <stepper value='{{ myValue }}'></stepper>
 ```
 
+### Styling
+
+`ractive-stepper` provides minimal styling in the js. It is designed to provide a foundation to easily style the increment/decrement buttons.
+
+By default they are small, cross browser css triangles. You can easily scale the size of the arrows by increasing the `font-size` of the `.steppers`
+container. It is also very easy to completely change the layout of the buttons (for example, a large "-/+" icon on either side of the button for mobile).
+
