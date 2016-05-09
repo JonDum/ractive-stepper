@@ -96,7 +96,7 @@ module.exports = Ractive.extend({
             var event = details.original;
             var key = event.keyCode || event.which;
 
-            if (!/[0-9]/.test(String.fromCharCode(key))) {
+            if (!/[0-9-]/.test(String.fromCharCode(key))) {
                 event.preventDefault();
             }
         });
