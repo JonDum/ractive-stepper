@@ -62,14 +62,17 @@ module.exports = Ractive.extend({
 
         self.observe('incrementing decrementing', function(value, old, keypath) {
 
-            if (value)
-                timeout = setTimeout(function() {
-                    interval = setInterval(bound[keypath], 10);
-                }, 500);
-            else {
+            if (value) {
+
                 if (old === true) {
                     bound[keypath]();
                 }
+
+                timeout = setTimeout(function() {
+                    interval = setInterval(bound[keypath], 10);
+                }, 500);
+            }
+            else {
                 clearTimeout(timeout)
                 clearInterval(interval)
             }
