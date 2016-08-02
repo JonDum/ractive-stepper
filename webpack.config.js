@@ -6,7 +6,7 @@ module.exports = {
     production: true,
     output: {
         path: __dirname + '/',
-        filename: 'ractive-stepper.min.js',
+        filename: 'ractive-stepper.js',
         library: 'RactiveStepper',
         libraryTarget: 'umd'
     },
