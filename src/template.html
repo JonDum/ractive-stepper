@@ -1,9 +1,10 @@
-<div class="ractive-stepper {{class}}{{#if focused}} focused{{/if}}" style='{{style}}'>
+<div class="ractive-stepper {{.class}}{{#if focused}} focused{{/if}}"
+    {{#if .style}}style='{{.style}}'{{/if}}>
 
-    {{#if showInput}}
-    <input value="{{value}}"
+    {{#if .showInput}}
+    <input value="{{.value}}"
            type='number'
-           size='{{size}}'
+           size='{{.size}}'
            on-keydown='keydown'
            on-keyup='keyup'
            on-keypress='keypress'
