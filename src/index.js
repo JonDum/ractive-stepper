@@ -112,6 +112,14 @@ module.exports = Ractive.extend({
             });
 
         });
+		
+		self.on('increment', function(details){
+			self.increment();
+		});
+		
+		self.on('decrement', function(details){
+			self.decrement();
+		});
 
     }
 
