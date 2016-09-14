@@ -14,8 +14,8 @@
     {{/if}}
 
     <div class='steppers'>
-        <div class='inc' on-mousedown='set("incrementing", true)' on-mouseup='set("incrementing", false)'></div>
-        <div class='dec' on-mousedown='set("decrementing", true)' on-mouseup='set("decrementing", false)'></div>
+        <div class='inc' on-mousedown='set("incrementing", true)' on-mouseup='set("incrementing", false)' on-click='increment'></div>
+        <div class='dec' on-mousedown='set("decrementing", true)' on-mouseup='set("decrementing", false)' on-click='decrement'></div>
     </div>
 
 </div>
