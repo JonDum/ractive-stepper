@@ -64,15 +64,15 @@ module.exports = Ractive.extend({
 
             if (value) {
 
-                if (old === true) {
-                    bound[keypath]();
-                }
-
                 timeout = setTimeout(function() {
                     interval = setInterval(bound[keypath], 10);
                 }, 500);
             }
             else {
+                if (old === true) {
+                    // call the inc/dec function just once if it was a quick click
+                    bound[keypath]();
+                }
                 clearTimeout(timeout)
                 clearInterval(interval)
             }
