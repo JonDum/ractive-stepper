@@ -15,13 +15,6 @@ module.exports = {
         modulesDirectories: ['node_modules', 'src'],
         extensions: ['', '.js', '.styl', '.html'],
     },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
-    ],
     module: {
         loaders: [
             {test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader'},
