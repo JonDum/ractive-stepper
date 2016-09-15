@@ -1,1 +1,534 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.RactiveStepper=t():e.RactiveStepper=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){n(1),e.exports=Ractive.extend({template:n(5),data:{value:0,size:3,showInput:!0,step:1,min:null,max:null},increment:function(e){var t=this,n=t.get("value"),r=t.get("max"),i=t.get("step");n=parseInt(n,10),n+=e||i,null!==r&&(n=Math.min(n,r)),t.set("value",n)},decrement:function(e){var t=this,n=this.get("value"),r=this.get("min"),i=t.get("step");n=parseInt(n,10),n-=e||i,null!==r&&(n=Math.max(n,r)),this.set("value",n)},oninit:function(){var e,t,n=this,r={incrementing:n.increment.bind(n),decrementing:n.decrement.bind(n)};n.observe("incrementing decrementing",function(n,i,o){n?(i===!0&&r[o](),t=setTimeout(function(){e=setInterval(r[o],10)},500)):(clearTimeout(t),clearInterval(e))}),n.on("keydown",function(e){var t=e.original,r=t.keyCode||t.which;38==r?n.set("incrementing",!0):40==r&&n.set("decrementing",!0)}),n.on("keypress",function(e){var t=e.original,n=t.keyCode||t.which;/[0-9-\.]/.test(String.fromCharCode(n))||t.preventDefault()}),n.on("keyup",function(e){n.set({incrementing:!1,decrementing:!1})})}})},function(e,t,n){var r=n(2);"string"==typeof r&&(r=[[e.id,r,""]]);n(4)(r,{});r.locals&&(e.exports=r.locals)},function(e,t,n){t=e.exports=n(3)(),t.push([e.id,".ractive-stepper{display:inline-block}.ractive-stepper *{vertical-align:middle}.ractive-stepper input{padding:.3em;text-align:right;color:inherit;-moz-appearance:textfield}.ractive-stepper input::-webkit-inner-spin-button,.ractive-stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.ractive-stepper .steppers{display:inline-block}.ractive-stepper .dec,.ractive-stepper .inc{border:.25em solid transparent;cursor:pointer}.ractive-stepper .inc{border-bottom-color:currentColor;margin-bottom:75%}.ractive-stepper .dec{border-top-color:currentColor}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var r={},i=0;i<this.length;i++){var o=this[i][0];"number"==typeof o&&(r[o]=!0)}for(i=0;i<t.length;i++){var s=t[i];"number"==typeof s[0]&&r[s[0]]||(n&&!s[2]?s[2]=n:n&&(s[2]="("+s[2]+") and ("+n+")"),e.push(s))}},e}},function(e,t,n){function r(e,t){for(var n=0;n<e.length;n++){var r=e[n],i=d[r.id];if(i){i.refs++;for(var o=0;o<i.parts.length;o++)i.parts[o](r.parts[o]);for(;o<r.parts.length;o++)i.parts.push(u(r.parts[o],t))}else{for(var s=[],o=0;o<r.parts.length;o++)s.push(u(r.parts[o],t));d[r.id]={id:r.id,refs:1,parts:s}}}}function i(e){for(var t=[],n={},r=0;r<e.length;r++){var i=e[r],o=i[0],s=i[1],a=i[2],c=i[3],u={css:s,media:a,sourceMap:c};n[o]?n[o].parts.push(u):t.push(n[o]={id:o,parts:[u]})}return t}function o(e,t){var n=h(),r=y[y.length-1];if("top"===e.insertAt)r?r.nextSibling?n.insertBefore(t,r.nextSibling):n.appendChild(t):n.insertBefore(t,n.firstChild),y.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");n.appendChild(t)}}function s(e){e.parentNode.removeChild(e);var t=y.indexOf(e);t>=0&&y.splice(t,1)}function a(e){var t=document.createElement("style");return t.type="text/css",o(e,t),t}function c(e){var t=document.createElement("link");return t.rel="stylesheet",o(e,t),t}function u(e,t){var n,r,i;if(t.singleton){var o=b++;n=g||(g=a(t)),r=p.bind(null,n,o,!1),i=p.bind(null,n,o,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(n=c(t),r=f.bind(null,n),i=function(){s(n),n.href&&URL.revokeObjectURL(n.href)}):(n=a(t),r=l.bind(null,n),i=function(){s(n)});return r(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;r(e=t)}else i()}}function p(e,t,n,r){var i=n?"":r.css;if(e.styleSheet)e.styleSheet.cssText=x(t,i);else{var o=document.createTextNode(i),s=e.childNodes;s[t]&&e.removeChild(s[t]),s.length?e.insertBefore(o,s[t]):e.appendChild(o)}}function l(e,t){var n=t.css,r=t.media;if(r&&e.setAttribute("media",r),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}function f(e,t){var n=t.css,r=t.sourceMap;r&&(n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */");var i=new Blob([n],{type:"text/css"}),o=e.href;e.href=URL.createObjectURL(i),o&&URL.revokeObjectURL(o)}var d={},v=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},m=v(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),h=v(function(){return document.head||document.getElementsByTagName("head")[0]}),g=null,b=0,y=[];e.exports=function(e,t){if("object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");t=t||{},"undefined"==typeof t.singleton&&(t.singleton=m()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var n=i(e);return r(n,t),function(e){for(var o=[],s=0;s<n.length;s++){var a=n[s],c=d[a.id];c.refs--,o.push(c)}if(e){var u=i(e);r(u,t)}for(var s=0;s<o.length;s++){var c=o[s];if(0===c.refs){for(var p=0;p<c.parts.length;p++)c.parts[p]();delete d[c.id]}}}};var x=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t){e.exports={v:3,t:[{t:7,e:"div",a:{"class":["ractive-stepper ",{t:2,r:".class"},{t:4,f:[" focused"],n:50,r:"focused"}]},m:[{t:4,f:["style='",{t:2,r:".style"},"'"],n:50,r:".style"}],f:[{t:4,f:[{t:7,e:"input",a:{value:[{t:2,r:".value"}],type:"number",size:[{t:2,r:".size"}]},v:{keydown:"keydown",keyup:"keyup",keypress:"keypress",focus:{m:"set",a:{r:[],s:'["focused",true]'}},blur:{m:"set",a:{r:[],s:'["focused",false]'}}}}],n:50,r:".showInput"}," ",{t:7,e:"div",a:{"class":"steppers"},f:[{t:7,e:"div",a:{"class":"inc"},v:{mousedown:{m:"set",a:{r:[],s:'["incrementing",true]'}},mouseup:{m:"set",a:{r:[],s:'["incrementing",false]'}}}}," ",{t:7,e:"div",a:{"class":"dec"},v:{mousedown:{m:"set",a:{r:[],s:'["decrementing",true]'}},mouseup:{m:"set",a:{r:[],s:'["decrementing",false]'}}}}]}]}]}}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["RactiveStepper"] = factory();
+	else
+		root["RactiveStepper"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(1);
+
+	module.exports = Ractive.extend({
+
+	    template: __webpack_require__(5),
+
+	    data: {
+	        value: 0,
+	        size: 3,
+	        showInput: true,
+
+	        step: 1,
+
+	        min: null,
+	        max: null,
+	    },
+
+	    increment: function(by) {
+
+	        var self = this;
+	        var value = self.get('value');
+	        var max = self.get('max');
+	        var step = self.get('step');
+
+	        value = parseInt(value, 10);
+	        value += (by || step)
+
+	        if (max !== null)
+	            value = Math.min(value, max);
+
+	        self.set('value', value);
+
+	    },
+
+	    decrement: function(by) {
+
+	        var self = this;
+	        var value = this.get('value');
+	        var min = this.get('min');
+	        var step = self.get('step');
+
+	        value = parseInt(value, 10);
+	        value -= (by || step)
+
+	        if (min !== null)
+	            value = Math.max(value, min);
+
+	        this.set('value', value);
+
+	    },
+
+	    oninit: function() {
+
+	        var self = this;
+
+	        var interval, timeout;
+
+	        var bound = {
+	            incrementing: self.increment.bind(self),
+	            decrementing: self.decrement.bind(self),
+	        };
+
+	        self.observe('incrementing decrementing', function(value, old, keypath) {
+
+	            if (value) {
+
+	                timeout = setTimeout(function() {
+	                    interval = setInterval(bound[keypath], 10);
+	                }, 500);
+	            }
+	            else {
+	                if (old === true) {
+	                    // call the inc/dec function just once if it was a quick click
+	                    bound[keypath]();
+	                }
+	                clearTimeout(timeout)
+	                clearInterval(interval)
+	            }
+
+	        });
+
+	        self.on('keydown', function(details) {
+
+	            var event = details.original;
+	            var key = event.keyCode || event.which;
+
+	            // up arrow
+	            if (key == 38) {
+	                self.set('incrementing', true);
+	            } else
+	            // down arrow
+	            if (key == 40) {
+	                self.set('decrementing', true);
+	            }
+
+	        });
+
+	        self.on('keypress', function(details) {
+	            var event = details.original;
+	            var key = event.keyCode || event.which;
+
+	            if (!/[0-9-\.]/.test(String.fromCharCode(key))) {
+	                event.preventDefault();
+	            }
+	        });
+
+	        self.on('keyup', function(details) {
+
+	            self.set({
+	                incrementing: false,
+	                decrementing: false
+	            });
+
+	        });
+
+	    }
+
+	});
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(2);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/stylus-loader/index.js!./styles.styl", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/stylus-loader/index.js!./styles.styl");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".ractive-stepper {\n  display: inline-block;\n}\n.ractive-stepper * {\n  vertical-align: middle;\n}\n.ractive-stepper input {\n  padding: 0.3em;\n  text-align: right;\n  color: inherit;\n  -moz-appearance: textfield;\n}\n.ractive-stepper input::-webkit-outer-spin-button,\n.ractive-stepper input::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.ractive-stepper .steppers {\n  display: inline-block;\n}\n.ractive-stepper .inc,\n.ractive-stepper .dec {\n  border: 0.25em solid transparent;\n  cursor: pointer;\n}\n.ractive-stepper .inc {\n  border-bottom-color: currentColor;\n  margin-bottom: 75%;\n}\n.ractive-stepper .dec {\n  border-top-color: currentColor;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":["ractive-stepper ",{"t":2,"r":".class"},{"t":4,"f":[" focused"],"n":50,"r":"focused"}]},"m":[{"t":4,"f":["style='",{"t":2,"r":".style"},"'"],"n":50,"r":".style"}],"f":[{"t":4,"f":[{"t":7,"e":"input","a":{"value":[{"t":2,"r":".value"}],"type":"number","size":[{"t":2,"r":".size"}]},"v":{"keydown":"keydown","keyup":"keyup","keypress":"keypress","focus":{"m":"set","a":{"r":[],"s":"[\"focused\",true]"}},"blur":{"m":"set","a":{"r":[],"s":"[\"focused\",false]"}}}}],"n":50,"r":".showInput"}," ",{"t":7,"e":"div","a":{"class":"steppers"},"f":[{"t":7,"e":"div","a":{"class":"inc"},"v":{"mousedown":{"m":"set","a":{"r":[],"s":"[\"incrementing\",true]"}},"mouseup":{"m":"set","a":{"r":[],"s":"[\"incrementing\",false]"}}}}," ",{"t":7,"e":"div","a":{"class":"dec"},"v":{"mousedown":{"m":"set","a":{"r":[],"s":"[\"decrementing\",true]"}},"mouseup":{"m":"set","a":{"r":[],"s":"[\"decrementing\",false]"}}}}]}]}]};
+
+/***/ }
+/******/ ])
+});
+;
