@@ -4,6 +4,8 @@ module.exports = Ractive.extend({
 
     template: require('./template'),
 
+    isolated: true,
+
     data: {
         value: 0,
         size: 3,
@@ -35,8 +37,8 @@ module.exports = Ractive.extend({
     decrement: function(by) {
 
         var self = this;
-        var value = this.get('value');
-        var min = this.get('min');
+        var value = self.get('value');
+        var min = self.get('min');
         var step = self.get('step');
 
         value = parseInt(value, 10);
@@ -45,8 +47,7 @@ module.exports = Ractive.extend({
         if (min !== null)
             value = Math.max(value, min);
 
-        this.set('value', value);
-
+        self.set('value', value);
     },
 
     oninit: function() {
