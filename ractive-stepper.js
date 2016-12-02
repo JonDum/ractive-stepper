@@ -60,6 +60,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    template: __webpack_require__(5),
 
+	    isolated: true,
+
 	    data: {
 	        value: 0,
 	        size: 3,
@@ -91,8 +93,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    decrement: function(by) {
 
 	        var self = this;
-	        var value = this.get('value');
-	        var min = this.get('min');
+	        var value = self.get('value');
+	        var min = self.get('min');
 	        var step = self.get('step');
 
 	        value = parseInt(value, 10);
@@ -101,8 +103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (min !== null)
 	            value = Math.max(value, min);
 
-	        this.set('value', value);
-
+	        self.set('value', value);
 	    },
 
 	    oninit: function() {
@@ -526,7 +527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":["ractive-stepper ",{"t":2,"r":".class"},{"t":4,"f":[" focused"],"n":50,"r":"focused"}]},"m":[{"t":4,"f":["style='",{"t":2,"r":".style"},"'"],"n":50,"r":".style"}],"f":[{"t":4,"f":[{"t":7,"e":"input","a":{"value":[{"t":2,"r":".value"}],"type":"number","size":[{"t":2,"r":".size"}]},"v":{"keydown":"keydown","keyup":"keyup","keypress":"keypress","focus":{"m":"set","a":{"r":[],"s":"[\"focused\",true]"}},"blur":{"m":"set","a":{"r":[],"s":"[\"focused\",false]"}}}}],"n":50,"r":".showInput"}," ",{"t":7,"e":"div","a":{"class":"steppers"},"f":[{"t":7,"e":"div","a":{"class":"inc"},"v":{"mousedown":{"m":"set","a":{"r":[],"s":"[\"incrementing\",true]"}},"mouseup":{"m":"set","a":{"r":[],"s":"[\"incrementing\",false]"}}}}," ",{"t":7,"e":"div","a":{"class":"dec"},"v":{"mousedown":{"m":"set","a":{"r":[],"s":"[\"decrementing\",true]"}},"mouseup":{"m":"set","a":{"r":[],"s":"[\"decrementing\",false]"}}}}]}]}]};
+	module.exports={"v":4,"t":[{"t":7,"e":"div","m":[{"n":"class","f":["ractive-stepper ",{"t":2,"r":".class"},{"t":4,"f":[" focused"],"n":50,"r":".focused"}],"t":13},{"t":4,"f":[{"n":"style","f":[{"t":2,"r":".style"}],"t":13}],"n":50,"r":".style"}],"f":[{"t":4,"f":[{"t":7,"e":"input","m":[{"n":"value","f":[{"t":2,"r":".value"}],"t":13},{"n":"type","f":"number","t":13},{"n":"size","f":[{"t":2,"r":".size"}],"t":13},{"n":"keydown","f":"keydown","t":70},{"n":"keyup","f":"keyup","t":70},{"n":"keypress","f":"keypress","t":70},{"n":"focus","f":{"x":{"r":["@this"],"s":"[_0.set(\"focused\",true)]"}},"t":70},{"n":"blur","f":{"x":{"r":["@this"],"s":"[_0.set(\"focused\",false)]"}},"t":70}]}],"n":50,"r":".showInput"}," ",{"t":7,"e":"div","m":[{"n":"class","f":"steppers","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"inc","t":13},{"n":"mousedown","f":{"x":{"r":["@this"],"s":"[_0.set(\"incrementing\",true)]"}},"t":70},{"n":"mouseup","f":{"x":{"r":["@this"],"s":"[_0.set(\"incrementing\",false)]"}},"t":70}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"dec","t":13},{"n":"mousedown","f":{"x":{"r":["@this"],"s":"[_0.set(\"decrementing\",true)]"}},"t":70},{"n":"mouseup","f":{"x":{"r":["@this"],"s":"[_0.set(\"decrementing\",false)]"}},"t":70}]}]}]}],"e":{}};
 
 /***/ }
 /******/ ])
