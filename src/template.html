@@ -1,4 +1,4 @@
-<div class="ractive-stepper {{.class}}{{#if focused}} focused{{/if}}"
+<div class="ractive-stepper {{.class}}{{#if .focused}} focused{{/if}}"
     {{#if .style}}style='{{.style}}'{{/if}}>
 
     {{#if .showInput}}
@@ -14,8 +14,8 @@
     {{/if}}
 
     <div class='steppers'>
-        <div class='inc' on-mousedown='set("incrementing", true)' on-mouseup='set("incrementing", false)'></div>
-        <div class='dec' on-mousedown='set("decrementing", true)' on-mouseup='set("decrementing", false)'></div>
+        <div class='inc' on-mousedown='@this.set("incrementing", true)' on-mouseup='@this.set("incrementing", false)'></div>
+        <div class='dec' on-mousedown='@this.set("decrementing", true)' on-mouseup='@this.set("decrementing", false)'></div>
     </div>
 
 </div>
