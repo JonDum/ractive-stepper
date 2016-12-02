@@ -46,42 +46,46 @@
 
         <pre>
             <code>
-    &lt;stepper value='5'/&gt;
+	&lt;stepper value='\{{foo}}'/&gt;
             </code>
         </pre>
 
-            <p>Result: <stepper value='5'/> (by default there is only minimal styling provided).</p>
+			<p>Result: <stepper value='{{foo}}'/> (by default there is only minimal styling provided).</p>
+
+			Foo = {{foo}}
+
+		</section>
 
             <section class='options'>
                 <h2>Options</h2>
 
-            <ul>
-                <li>
-                    <code>step</code> Specifies the value granularity of the element’s value (default <code>1</code>)
-                </li>
+				<ul>
+					<li>
+						<code>step</code> Specifies the value granularity of the element’s value (default <code>1</code>)
+					</li>
 
-                <li>
-                    <code>min</code> The expected lower bound for the element’s value (default <code>null</code>)
-                </li>
+					<li>
+						<code>min</code> The expected lower bound for the element’s value (default <code>null</code>)
+					</li>
 
-                <li>
-                    <code>max</code> The expected upper bound for the element’s value (default <code>null</code>)
-                </li>
+					<li>
+						<code>max</code> The expected upper bound for the element’s value (default <code>null</code>)
+					</li>
 
-                <li>
-                    <code>size</code> Maps to the <code>size</code> attribute of the inner input (default <code>3</code>)
-                </li>
+					<li>
+						<code>size</code> Maps to the <code>size</code> attribute of the inner input (default <code>3</code>)
+					</li>
 
-            </ul>
+				</ul>
 
 
-        <pre>
-            <code>
-    &lt;stepper value='10' min='0' max='50' step='5' size='20'/&gt;
-            </code>
-        </pre>
+			<pre>
+				<code>
+&lt;stepper value='10' min='0' max='50' step='5' size='20'/&gt;
+				</code>
+			</pre>
 
-            <p>Result: <stepper value='5' min='0' max='50' step='5' size='20'/></p>
+				<p>Result: <stepper value='5' min='0' max='50' step='5' size='20'/></p>
 
             </section>
 
